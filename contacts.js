@@ -14,22 +14,30 @@
 'use strict';
 
 const path = require('path');
-const { google } = require('googleapis');
-const { authenticate } = require('@google-cloud/local-auth');
+const {
+    google
+} = require('googleapis');
+const {
+    authenticate
+} = require('@google-cloud/local-auth');
 
 const people = google.people('v1');
 
 async function runSample() {
     // Obtain user credentials to use for the request
     const auth = await authenticate({
-        keyfilePath: path.join(__dirname, '../oauth2.keys.json'),
+        keyfilePath: path.join(__dirname, './oauth2.keys.json'),
         scopes: ['https://www.googleapis.com/auth/contacts'],
     });
-    google.options({ auth });
+    google.options({
+        auth
+    });
 
     // List all user's contact groups
     // https://developers.google.com/people/api/rest/v1/contactGroups
-    const { data: groups } = await people.people.get({
+    const {
+        data: groups
+    } = await people.people.get({
         resourceName: 'contactGroups',
     });
     console.log('Contact Groups:\n', groups);
@@ -37,15 +45,41 @@ async function runSample() {
     // List all user connections / contacts
     // https://developers.google.com/people/api/rest/v1/people.connections
     const {
-        data: { connections },
+        data: {
+            connections
+        },
     } = await people.people.connections.list({
-        personFields: ['names', 'emailAddresses'],
+        personFields: [
+            "addresses", "ageRanges", "biographies",
+            "birthdays", "calendarUrls",
+            "clientData",
+            "coverPhotos",
+            "emailAddresses",
+            "events",
+            "externalIds",
+            "genders",
+            "imClients", "interests", "locales",
+            "locations", , "memberships",
+            "metadata",
+            "miscKeywords",
+            "names",
+            "nicknames", , "occupations",
+            "organizations",
+            "phoneNumbers",
+            "photos",
+            "relations", , "sipAddresses",
+            "skills",
+            "urls",
+            "userDefined",
+        ],
         resourceName: 'people/me',
-        pageSize: 10,
+        pageSize:1000,
     });
-    console.log("\n\nUser's Connections:\n");
-    connections.forEach(c => console.log(c));
-
+    console.log("\n\nUser's Connections:\n", connections);
+    // connections.forEach(c => console.log(c));
+    return {
+        connections
+    }
     // // Create a new contact
     // // https://developers.google.com/people/api/rest/v1/people/createContact
     // const { data: newContact } = await people.people.createContact({
@@ -60,7 +94,7 @@ async function runSample() {
     //         ],
     //     },
     // });
-    console.log('\n\nCreated Contact:', newContact);
+    // console.log('\n\nCreated Contact:', newContact);
 }
 
 if (module === require.main) {

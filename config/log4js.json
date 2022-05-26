@@ -20,27 +20,19 @@
             "type": "logLevelFilter",
             "level": "ERROR",
             "appender": "errorFile"
-        },
-        "console": {
-            "type": "console",
-            "layout": {
-                "type": "json"
-            }
         }
     },
     "categories": {
         "default": {
             "appenders": [
                 "app",
-                "errors",
-                "console"
+                "errors"
             ],
-            "level": "info"
+            "level": "DEBUG"
         },
         "http": {
             "appenders": [
-                "access",
-                "console"
+                "access"
             ],
             "level": "DEBUG"
         }

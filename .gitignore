@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Google Client ID 
-client_secret*.json
+oauth2.keys.json

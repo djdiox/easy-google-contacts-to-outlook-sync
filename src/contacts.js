@@ -46,24 +46,24 @@ async function runSample() {
     console.log("\n\nUser's Connections:\n");
     connections.forEach(c => console.log(c));
 
-    // Create a new contact
-    // https://developers.google.com/people/api/rest/v1/people/createContact
-    const { data: newContact } = await people.people.createContact({
-        requestBody: {
-            emailAddresses: [{ value: 'john@doe.com' }],
-            names: [
-                {
-                    displayName: 'John Doe',
-                    familyName: 'Doe',
-                    givenName: 'John',
-                },
-            ],
-        },
-    });
+    // // Create a new contact
+    // // https://developers.google.com/people/api/rest/v1/people/createContact
+    // const { data: newContact } = await people.people.createContact({
+    //     requestBody: {
+    //         emailAddresses: [{ value: 'john@doe.com' }],
+    //         names: [
+    //             {
+    //                 displayName: 'John Doe',
+    //                 familyName: 'Doe',
+    //                 givenName: 'John',
+    //             },
+    //         ],
+    //     },
+    // });
     console.log('\n\nCreated Contact:', newContact);
 }
 
 if (module === require.main) {
     runSample().catch(console.error);
 }
-module.exports = runSample;
+module.exports.runSample = runSample;

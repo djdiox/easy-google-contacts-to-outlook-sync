@@ -1,0 +1,36 @@
+{
+  "name": "easy-google-contacts-to-outlook-sync",
+  "version": "1.0.0",
+  "description": "Syncs Outlook Contacts  every 5 Minutes to Outlook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djdiox/google-contacts-sync-to-outlook.git"
+  },
+  "keywords": [
+    "outlook",
+    "google",
+    "contacts",
+    "sync",
+    "windows",
+    "microsoft",
+    "adresses",
+    "persons",
+    "easy",
+    "useful",
+    "tool"
+  ],
+  "author": "Markus Wagner (djdiox)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djdiox/google-contacts-sync-to-outlook/issues"
+  },
+  "homepage": "https://github.com/djdiox/google-contacts-sync-to-outlook#readme",
+  "dependencies": {
+    "google-contacts": "^0.1.5",
+    "googleapis": "^100.0.0"
+  }
+}
